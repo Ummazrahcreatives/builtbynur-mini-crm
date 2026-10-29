@@ -1,0 +1,152 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: #ffffff;
+  color: #4a2f27;
+}
+
+.layout { min-height: 100vh; }
+
+/* Top bar (phone) */
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: #fff5f6;
+  border-bottom: 1px solid #f3d9dc;
+}
+.brand { margin: 0; font-size: 1.25rem; color: #4a2f27; }
+.menu-btn {
+  background: #f8d7da;
+  color: #4a2f27;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+}
+
+/* Sidebar (hidden on phone until Menu is tapped) */
+.sidebar {
+  display: none;
+  background: #fff5f6;
+  padding: 10px 18px 16px;
+  border-bottom: 1px solid #f3d9dc;
+}
+.sidebar.open { display: block; }
+.desktop-only { display: none; }
+.nav-link {
+  display: block;
+  padding: 10px 12px;
+  margin-bottom: 6px;
+  border-radius: 10px;
+  color: #4a2f27;
+  text-decoration: none;
+}
+.nav-link.active { background: #f8d7da; font-weight: 600; }
+
+.content { padding: 20px 18px 40px; }
+h2 { margin: 0 0 4px; }
+.subtitle { margin: 0 0 20px; color: #8a6f66; font-size: 0.9rem; }
+
+/* Summary cards */
+.cards { display: grid; grid-template-columns: 1fr; gap: 12px; margin-bottom: 24px; }
+.card {
+  background: #fff5f6;
+  border: 1px solid #f3d9dc;
+  border-radius: 16px;
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.card-label { font-size: 0.9rem; color: #8a6f66; }
+.card-number { font-size: 2rem; font-weight: 700; }
+
+/* Leads panel */
+.panel {
+  border: 1px solid #f3d9dc;
+  border-radius: 16px;
+  padding: 16px;
+}
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.panel-header h3 { margin: 0; }
+
+.btn {
+  background: #e8a5ab;
+  color: #4a2f27;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+.btn.ghost { background: #fff; border: 1px solid #e8a5ab; }
+
+/* Table */
+.table-wrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; min-width: 560px; }
+th, td { text-align: left; padding: 12px 10px; border-bottom: 1px solid #f6e4e6; }
+th { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; color: #8a6f66; }
+
+select, input {
+  font: inherit;
+  color: #4a2f27;
+  padding: 8px 10px;
+  border: 1px solid #e8c9cc;
+  border-radius: 10px;
+  background: #fff;
+}
+.status { border-radius: 20px; font-weight: 600; }
+.status.new { background: #fde8ea; }
+.status.contacted { background: #fff3dd; }
+.status.qualified { background: #e9f3ea; }
+.status.converted { background: #dff0e1; }
+
+/* Add Lead form */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(74, 47, 39, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+}
+.modal {
+  background: #fff;
+  border-radius: 18px;
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.modal h3 { margin: 0 0 6px; }
+.modal label { font-size: 0.85rem; color: #8a6f66; }
+.form-actions { display: flex; gap: 10px; justify-content: flex-end; margin-top: 12px; }
+
+/* Bigger screens: show sidebar, hide top bar */
+@media (min-width: 800px) {
+  .layout { display: flex; }
+  .topbar { display: none; }
+  .sidebar {
+    display: block;
+    width: 230px;
+    min-height: 100vh;
+    padding: 24px 18px;
+    border-bottom: none;
+    border-right: 1px solid #f3d9dc;
+  }
+  .desktop-only { display: block; margin-bottom: 24px; }
+  .content { flex: 1; padding: 32px 40px; }
+  .cards { grid-template-columns: repeat(3, 1fr); }
+  }
